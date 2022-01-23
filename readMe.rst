@@ -16,7 +16,7 @@ Here is the poetry doc for installing dependencies to the project:
 > poetry config virtualenvs.in-project true
 
 then run the following command:
-> poetry insta
+> poetry install
 
 1. For populating requirements.txt, use this command:
 	> poetry export -f requirements.txt --output requirements.txt
