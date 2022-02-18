@@ -20,8 +20,10 @@ idna==3.3; python_version >= "3.5" and python_full_version < "3.0.0" or python_f
 importlib-metadata==4.10.1; python_version < "3.10" and python_version >= "3.7"
 markdown==3.3.6; python_version >= "3.6"
 oauthlib==3.1.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
+postgres==4.0
 promise==2.3
-psycopg2==2.9.3; python_version >= "3.6"
+psycopg2==2.9.3; sys_platform == "win32" and python_version >= "3.6"
+psycopg2-binary==2.9.3
 pycparser==2.21; python_version >= "3.6" and python_full_version < "3.0.0" or python_version >= "3.6" and python_full_version >= "3.4.0"
 pyjwt==2.3.0; python_version >= "3.6"
 python-decouple==3.5
