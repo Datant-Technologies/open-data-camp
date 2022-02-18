@@ -178,11 +178,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # http://whitenoise.evans.io/en/stable/django.html#add-compression-and-caching-support
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+
+AZURE_ACCOUNT_NAME = config("BLOB_STORAGE_ACCOUNT_NAME")
+AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
+STATIC_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/"
+MEDIA_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/"
+
+DEFAULT_FILE_STORAGE = "Backend.custom_azure_storage.AzureMediaStorage"
+STATICFILES_STORAGE = "Backend.custom_azure_storage.AzureStaticStorage"
 
 
 # DJANGO-CRISPY-FORMS CONFIGS
@@ -214,3 +226,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_UNIQUE_EMAIL = True
+
